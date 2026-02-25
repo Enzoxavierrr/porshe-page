@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Porsche Experience — Precisão. Performance. Paixão. Explore a perfeição da engenharia.">
+    <meta property="og:title" content="Porsche Experience | Design Que Move">
+    <meta property="og:description" content="Landing page imersiva Porsche com scroll cinematográfico.">
+    <meta property="og:type" content="website">
+    <title>Porsche Experience | Design Que Move</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- ============================================ -->
+    <!-- Tela de carregamento -->
+    <!-- ============================================ -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <svg class="preloader-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" stroke="#E31E24" stroke-width="1" opacity="0.3" />
+                <text x="50" y="55" text-anchor="middle" fill="#fff" font-family="Outfit" font-weight="800"
+                    font-size="14">PORSCHE</text>
+            </svg>
+            <div class="preloader-bar-track">
+                <div class="preloader-bar-fill" id="preloaderBar"></div>
+            </div>
+            <p class="preloader-percent" id="preloaderPercent">0%</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- Header-->
+    <!-- ============================================ -->
+    <header id="header">
+        <nav class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-text">PORSCHE</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#models">Modelos</a></li>
+                <li><a href="#technology">Tecnologia</a></li>
+                <li><a href="#experience">Experiência</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ============================================ -->
+        <!-- Sessão hero -->
+        <!-- ============================================ -->
+        <section id="hero" class="hero-section">
+            <img id="heroFrame" class="hero-frame" src="./assets/ezgif-frame-001.png" alt="Experiência Porsche">
+
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title" id="heroTitle">
+                    <span class="title-line">Sinta a</span>
+                    <span class="title-line title-accent">Engenharia</span>
+                </h1>
+                <p class="hero-subtitle">Precisão. Performance. Paixão.</p>
+                <a href="#models" class="hero-cta">
+                    <span>Explorar Modelos</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-line"></div>
+                <span>Role</span>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- Sobre -->
+        <!-- ============================================ -->
+        <section id="about" class="about-section">
+            <div class="section-container">
+                <div class="about-header">
+                    <span class="section-tag">Desde 1931</span>
+                    <h2 class="section-title">O Legado da <span class="text-accent">Porsche</span></h2>
+                    <p class="section-description">
+                        Por mais de nove décadas, a Porsche definiu o que significa projetar a máquina de direção
+                        perfeita.
+                        Cada curva, cada componente, cada batida do motor conta uma história de excelência
+                        inigualável.
+                    </p>
+                </div>
+
+        
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="75">0</span>
+                        <span class="stat-suffix">+</span>
+                        <p class="stat-label">Anos de Excelência</p>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="911">0</span>
+                        <span class="stat-suffix">+</span>
+                        <p class="stat-label">Patentes Registradas</p>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="30000">0</span>
+                        <span class="stat-suffix">+</span>
+                        <p class="stat-label">Vitórias em Corridas</p>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="100">0</span>
+                        <span class="stat-suffix">%</span>
+                        <p class="stat-label">Engenharia Alemã</p>
+                    </div>
+                </div>
+
+              
+                <div class="about-cards">
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3>Herança</h3>
+                        <p>Um legado construído sobre décadas de excelência no automobilismo e inovação em engenharia
+                            que define a história automotiva.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3>Inovação</h3>
+                        <p>Ultrapassando limites com motorizações híbridas, aerodinâmica ativa e sistemas de
+                            conectividade de ponta.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                        </div>
+                        <h3>Futuro</h3>
+                        <p>Liderando a transição para a mobilidade elétrica enquanto preserva a alma e o espírito que
+                            faz um Porsche ser um Porsche.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- Galeria de modelos -->
+        <!-- ============================================ -->
+        <section id="models" class="models-section">
+            <div class="section-container">
+                <div class="models-header">
+                    <span class="section-tag">A Linha</span>
+                    <h2 class="section-title">Modelos <span class="text-accent">Icônicos</span></h2>
+                </div>
+                <div class="models-grid">
+                    <div class="model-card">
+                        <div class="model-image-wrapper">
+                            <img class="model-image" src="./assets/ModelosIconicos/911-turbo-s.jpg"
+                                alt="Porsche 911 Turbo S" loading="lazy">
+                        </div>
+                        <div class="model-info">
+                            <span class="model-category">Esportivo</span>
+                            <h3>911 Turbo S</h3>
+                            <div class="model-specs">
+                                <span>650 PS</span>
+                                <span>2.7s 0-100</span>
+                                <span>330 km/h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="model-card">
+                        <div class="model-image-wrapper">
+                            <img class="model-image" src="./assets/ModelosIconicos/taycan-turbo-gt.jpg"
+                                alt="Porsche Taycan Turbo GT" loading="lazy">
+                        </div>
+                        <div class="model-info">
+                            <span class="model-category">Esportivo Elétrico</span>
+                            <h3>Taycan Turbo GT</h3>
+                            <div class="model-specs">
+                                <span>1.108 PS</span>
+                                <span>2.2s 0-100</span>
+                                <span>305 km/h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="model-card">
+                        <div class="model-image-wrapper">
+                            <img class="model-image" src="./assets/ModelosIconicos/cayenne-turbo.jpg"
+                                alt="Porsche Cayenne Turbo E-Hybrid" loading="lazy">
+                        </div>
+                        <div class="model-info">
+                            <span class="model-category">SUV</span>
+                            <h3>Cayenne Turbo E-Hybrid</h3>
+                            <div class="model-specs">
+                                <span>739 PS</span>
+                                <span>3.6s 0-100</span>
+                                <span>295 km/h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="model-card">
+                        <div class="model-image-wrapper">
+                            <img class="model-image" src="./assets/ModelosIconicos/718-gt4-rs.jpg"
+                                alt="Porsche 718 Cayman GT4 RS" loading="lazy">
+                        </div>
+                        <div class="model-info">
+                            <span class="model-category">Esportivo</span>
+                            <h3>718 Cayman GT4 RS</h3>
+                            <div class="model-specs">
+                                <span>500 PS</span>
+                                <span>3.4s 0-100</span>
+                                <span>315 km/h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="model-card">
+                        <div class="model-image-wrapper">
+                            <img class="model-image" src="./assets/ModelosIconicos/panamera-turbo.jpg"
+                                alt="Porsche Panamera Turbo S" loading="lazy">
+                        </div>
+                        <div class="model-info">
+                            <span class="model-category">Gran Turismo</span>
+                            <h3>Panamera Turbo S</h3>
+                            <div class="model-specs">
+                                <span>630 PS</span>
+                                <span>3.1s 0-100</span>
+                                <span>315 km/h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="model-card">
+                        <div class="model-image-wrapper">
+                            <img class="model-image" src="./assets/ModelosIconicos/macan-turbo.jpg"
+                                alt="Porsche Macan Turbo Electric" loading="lazy">
+                        </div>
+                        <div class="model-info">
+                            <span class="model-category">SUV Coupé</span>
+                            <h3>Macan Turbo Electric</h3>
+                            <div class="model-specs">
+                                <span>639 PS</span>
+                                <span>3.3s 0-100</span>
+                                <span>260 km/h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- tech -->
+        <!-- ============================================ -->
+        <section id="technology" class="tech-section">
+            <div class="section-container">
+                <span class="section-tag">Engenharia</span>
+                <h2 class="section-title">Tecnologia de <span class="text-accent">Ponta</span></h2>
+
+                <div class="tech-grid">
+                    <div class="tech-feature">
+                        <div class="tech-number">01</div>
+                        <div class="tech-content">
+                            <h3>Motorização Híbrida</h3>
+                            <p>Combinando a precisão elétrica com a paixão da combustão. Nossos sistemas E-Hybrid
+                                entregam torque instantâneo e capacidade de zero emissão sem comprometer a experiência
+                                de condução Porsche.</p>
+                        </div>
+                        <div class="tech-glow"></div>
+                    </div>
+                    <div class="tech-feature">
+                        <div class="tech-number">02</div>
+                        <div class="tech-content">
+                            <h3>Aerodinâmica Ativa</h3>
+                            <p>Aerofólios traseiros adaptativos, entradas de ar ativas e difusores que respondem em
+                                tempo real às condições de direção, otimizando downforce e arrasto a cada velocidade.
+                            </p>
+                        </div>
+                        <div class="tech-glow"></div>
+                    </div>
+                    <div class="tech-feature">
+                        <div class="tech-number">03</div>
+                        <div class="tech-content">
+                            <h3>Porsche Connect</h3>
+                            <p>Integração digital perfeita com navegação em tempo real, serviços remotos e Apple
+                                CarPlay. Seu Porsche permanece conectado, inteligente e sempre pronto.</p>
+                        </div>
+                        <div class="tech-glow"></div>
+                    </div>
+                    <div class="tech-feature">
+                        <div class="tech-number">04</div>
+                        <div class="tech-content">
+                            <h3>Freios Cerâmicos Compostos</h3>
+                            <p>Os freios Porsche Ceramic Composite (PCCB) entregam poder de frenagem excepcional com 50%
+                                menos peso que freios convencionais. Performance sem fadiga, volta após volta.</p>
+                        </div>
+                        <div class="tech-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- experiencia-->
+        <!-- ============================================ -->
+        <section id="experience" class="experience-section">
+            <div class="section-container">
+                <span class="section-tag">Sinta</span>
+                <h2 class="section-title">A <span class="text-accent">Experiência</span> Porsche</h2>
+
+              
+                <div class="experience-quote">
+                    <div class="quote-mark">"</div>
+                    <blockquote>
+                        Não há substituto. Quando você dirige um Porsche, cada estrada se torna uma pista,
+                        cada viagem se torna um evento e cada momento se torna inesquecível.
+                    </blockquote>
+                    <cite>— Ferry Porsche</cite>
+                </div>
+
+                
+                <div class="testimonials">
+                    <div class="testimonial active" data-index="0">
+                        <p>"O 911 Turbo S não é apenas um carro — é uma máquina do tempo. 0 a 100 em 2.7 segundos
+                            reconfigura seu cérebro. Nada te prepara pra essa arrancada."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MH</div>
+                            <div>
+                                <strong>Michael H.</strong>
+                                <span>Proprietário 911 Turbo S</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial" data-index="1">
+                        <p>"Mudar para o Taycan foi como entrar no futuro. Aceleração silenciosa e brutal, e ainda
+                            assim parece que cada átomo é um Porsche."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">SK</div>
+                            <div>
+                                <strong>Sarah K.</strong>
+                                <span>Proprietária Taycan Turbo GT</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial" data-index="2">
+                        <p>"Já dirigi supercarros de todas as marcas. Nada chega perto do equilíbrio e da precisão de
+                            um Porsche numa estrada de montanha. Nada."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">RL</div>
+                            <div>
+                                <strong>Ricardo L.</strong>
+                                <span>Proprietário 718 GT4 RS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-dots">
+                    <button class="dot active" data-index="0" aria-label="Depoimento 1"></button>
+                    <button class="dot" data-index="1" aria-label="Depoimento 2"></button>
+                    <button class="dot" data-index="2" aria-label="Depoimento 3"></button>
+                </div>
+
+               
+                <div class="experience-cta">
+                    <h3>Pronto Para Sentir a Diferença?</h3>
+                    <p>Agende sua visita ao Porsche Experience Center e sinta 90 anos de excelência em engenharia.</p>
+                    <a href="#" class="cta-button primary pulse">
+                        <span>Agende Seu Test Drive</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <a href="#" class="cta-button secondary">
+                        <span>Baixar Catálogo</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer id="footer" class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <span class="footer-logo">PORSCHE</span>
+                    <p>Não há substituto.</p>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Modelos</h4>
+                    <ul>
+                        <li><a href="#">911</a></li>
+                        <li><a href="#">Taycan</a></li>
+                        <li><a href="#">Cayenne</a></li>
+                        <li><a href="#">Panamera</a></li>
+                        <li><a href="#">Macan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Experiência</h4>
+                    <ul>
+                        <li><a href="#">Configurador</a></li>
+                        <li><a href="#">Encontre um Dealer</a></li>
+                        <li><a href="#">Test Drive</a></li>
+                        <li><a href="#">Porsche Connect</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Conecte-se</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" />
+                                <circle cx="12" cy="12" r="5" />
+                                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 001.94-2A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor"
+                                    stroke="none" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Enzo Xavier — Projeto de Portfólio</p>
+                <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 19V5M5 12l7-7 7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
