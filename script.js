@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // CONFIG
     // ============================================
     const FRAME_COUNT = 300;
-    const FRAME_PATH = './assets/ezgif-frame-';
+    const FRAME_PATH = './assets/Frames/ezgif-frame-';
     const FRAME_EXT = '.png';
 
     // ============================================
