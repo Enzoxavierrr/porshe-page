@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     const FRAME_COUNT = 300;
     const FRAME_PATH = './assets/Frames/ezgif-frame-';
-    const FRAME_EXT = '.png';
+    const FRAME_EXT = '.webp';
 
     // ============================================
     // PRELOADER + IMAGE PRELOADING
