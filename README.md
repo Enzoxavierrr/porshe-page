@@ -6,6 +6,9 @@ Uma landing page cinematográfica e imersiva inspirada na Porsche, construída c
 
 ---
 
+- Link da aplicação : https://porshe-page.vercel.app/
+----
+
 ## ✨ Destaques
 
 - **Hero Cinematográfico** — Sequência de 300 frames PNG renderizada via `<img>` nativo com interpolação suave (lerp + rAF), criando um efeito de "vídeo controlado por scroll"
