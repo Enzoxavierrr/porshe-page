@@ -107,11 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ============================================
-    // CONFIG
-    // ============================================
-    const FRAME_COUNT = 300;
-    const FRAME_PATH = './assets/Frames/ezgif-frame-';
+    const FRAME_COUNT = 240;
+    const FRAME_PATH = './assets/new_assets/ezgif-frame-';
     const FRAME_EXT = '.webp';
 
     // ============================================
@@ -121,6 +118,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloaderBar = document.getElementById('preloaderBar');
     const preloaderPercent = document.getElementById('preloaderPercent');
     const heroFrame = document.getElementById('heroFrame');
+
+    // Helper for progress update / letter reveal
+    function updateProgress(progress) {
+        if (preloaderBar) preloaderBar.style.width = progress + '%';
+        if (preloaderPercent) preloaderPercent.textContent = progress + '%';
+
+        const letters = document.querySelectorAll('.porsche-letter');
+        if (letters.length > 0) {
+            let activeCount = Math.floor((progress / 100) * 7);
+            if (progress >= 100) activeCount = 7;
+
+            letters.forEach((letter, index) => {
+                if (index < activeCount) {
+                    letter.classList.add('active');
+                } else {
+                    letter.classList.remove('active');
+                }
+            });
+        }
+    }
 
     // Store all frame images (preloaded in memory)
     const frames = [];
@@ -176,8 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     loadedCount++;
                     // Scale progress to 0-80% during actual loading
                     const progress = Math.round((loadedCount / FRAME_COUNT) * LOAD_PHASE_MAX);
-                    preloaderBar.style.width = progress + '%';
-                    preloaderPercent.textContent = progress + '%';
+                    updateProgress(progress);
 
                     if (loadedCount === FRAME_COUNT) {
                         resolve();
@@ -187,8 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 img.onerror = () => {
                     loadedCount++;
                     const progress = Math.round((loadedCount / FRAME_COUNT) * LOAD_PHASE_MAX);
-                    preloaderBar.style.width = progress + '%';
-                    preloaderPercent.textContent = progress + '%';
+                    updateProgress(progress);
 
                     if (loadedCount === FRAME_COUNT) {
                         resolve();
@@ -235,15 +250,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const easedT = 1 - Math.pow(1 - t, 3); // cubic ease-out
             fakeProgress = LOAD_PHASE_MAX + (targetProgress - LOAD_PHASE_MAX) * easedT;
 
-            preloaderBar.style.width = Math.round(fakeProgress) + '%';
-            preloaderPercent.textContent = Math.round(fakeProgress) + '%';
+            updateProgress(Math.round(fakeProgress));
 
             if (currentStep < steps) {
                 setTimeout(animateRemainingProgress, stepTime);
             } else {
                 // Ensure we hit 100%
-                preloaderBar.style.width = '100%';
-                preloaderPercent.textContent = '100%';
+                updateProgress(100);
 
                 // Small pause at 100% before hiding
                 setTimeout(() => {
@@ -260,8 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
             animateRemainingProgress();
         } else {
             // If min time already passed, quickly finish
-            preloaderBar.style.width = '100%';
-            preloaderPercent.textContent = '100%';
+            updateProgress(100);
             setTimeout(() => {
                 preloader.classList.add('loaded');
                 setTimeout(() => {
